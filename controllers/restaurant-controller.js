@@ -101,7 +101,7 @@ const restaurantController = {
           ...restaurant.toJSON(),
           description: restaurant.description.substring(0, 50),
           favoritedCount: restaurant.FavoritedUsers.length,
-          isFavorited: req.user.FavoritedRestaurants.some(r => r.id === restaurant.id)
+          isFavorited: req?.user?.FavoritedRestaurants?.some(r => r.id === restaurant.id)
         }))
           .sort((a, b) => b.favoritedCount - a.favoritedCount).slice(0, 10)
         return res.render('top-restaurants', { restaurants: result })
